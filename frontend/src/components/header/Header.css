@@ -1,0 +1,39 @@
+.wrapper {
+    width: 100vw;
+    height: 10vh;
+    background-color: #101418;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 2em;
+}
+
+.title {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+}
+
+.underline {
+    width: 100vw;
+    height: 0.5vh;
+    background-color: gray;
+}
+
+.logo {
+    width: 100px;
+    height: 50px;
+}
+
+.logo_ref {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
