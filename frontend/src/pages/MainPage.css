@@ -1,5 +1,26 @@
 .main-page {
     width: 100vw;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #101418;
+}
+
+.addServer {
+    font-weight: bold;
+    font-size: 2em;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.addServerBtn {
+    background-color: rgb(17, 138, 17);
+}
+
+.mainWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 2em 0 2em 0;
 }

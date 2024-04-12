@@ -1,0 +1,16 @@
+.titleWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid green;
+    padding: 1em;
+    background-color: red;
+}
+
+.white-text {
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    font-family: "Roboto", sans-serif;
+    margin: 0 2em;
+}
