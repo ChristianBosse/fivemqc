@@ -1,30 +1,33 @@
+// Import Environment Variables
+require("dotenv").config();
+// Import needed modules
 const cors = require("cors");
 const express = require("express");
-const cfx = require("cfx-api");
 
-require("dotenv").config();
+// Import Cron Job
+const serverDataSchedule = require("../cron/ServerDataCron");
+const serverClientCron = require("../cron/ServerClientCron");
 
+// Start Cron Job
+serverDataSchedule();
+serverClientCron();
+
+// Import Port
+const PORT = process.env.PORT;
+
+// Create Express App
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT;
+// Import Routes
+const serverStatus = require("../controllers/ServerStatus/ServerStatus");
+const serverInfo = require("../controllers/ServerInfo/ServerInfo");
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
-});
+// Use Routes
+app.use("/api", serverStatus);
 
-app.get("/api/server", async (req, res) => {
-    try {
-        const server = await cfx.fetchServer("x3x33e");
-        res.status(200).json(server);
-    } catch (error) {
-        res.status(404).json({
-            message: "server seems to be down!",
-            error: error,
-        });
-    }
-});
+app.use("/api", serverInfo);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
