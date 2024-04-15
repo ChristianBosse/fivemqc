@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div className="stickyHeader">
             <div className="wrapper">
-                <div className="container">
+                <div className="headerContainer">
                     <a href="/" className="logo_ref">
                         <img
                             className="logo"

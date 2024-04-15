@@ -2,11 +2,44 @@ const cron = require("node-cron");
 const cfx = require("cfx-api");
 const pool = require("../db/database");
 
+const peakDailyPlayers = async () => {
+    cron.schedule("*/1 * * * *", async () => {
+        const date = new Date();
+        const minutes = date.getMinutes();
+        if (minutes == 37) {
+            try {
+                const [rows] = await pool.query(
+                    "SELECT server_id FROM server_list"
+                );
+                rows.forEach(async row => {
+                    const [data] = await pool.query(
+                        "SELECT * FROM server_player_charts WHERE server_id = ?",
+                        [row.server_id]
+                    );
+
+                    const peak = data.reduce((highest, player) => {
+                        return player.server_player > highest
+                            ? player.server_player
+                            : highest;
+                    }, 0);
+
+                    const result = await pool.query(
+                        "UPDATE server_data SET server_peak = ? WHERE server_id = ?",
+                        [peak, row.server_id]
+                    );
+                });
+            } catch (error) {
+                console.log(error);
+            }
+        }
+    });
+};
+
 const serverDataSchedule = async () => {
     cron.schedule("*/1 * * * *", async () => {
         const date = new Date();
         const minutes = date.getMinutes();
-        if (minutes === 59) {
+        if (minutes === 58) {
             const [rows] = await pool.query(
                 "SELECT server_id FROM server_list"
             );
@@ -37,4 +70,4 @@ const serverDataSchedule = async () => {
     });
 };
 
-module.exports = serverDataSchedule;
+module.exports = { peakDailyPlayers, serverDataSchedule };

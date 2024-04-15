@@ -6,6 +6,8 @@ import {
     Collapse,
     IconButton,
     Grid,
+    Badge,
+    Alert,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
@@ -17,25 +19,41 @@ const ServerExplorer = props => {
     const [expanded, setExpanded] = useState(false);
 
     const {
-        server_desc,
+        message,
+        server_clients,
         server_discord,
         server_id,
-        server_max_client,
+        server_max_clients,
         server_name,
         server_owner,
+        server_desc,
         server_website,
+        server_peak,
     } = props.server;
 
     const toggleExpansion = () => {
         setExpanded(!expanded);
     };
 
+    const characterLimit = str => {
+        try {
+            if (str.length >= 16) {
+                return str.substring(0, 16) + "...";
+            } else {
+                return str;
+            }
+        } catch (error) {
+            return "N/A";
+        }
+    };
+
     return (
         // <ThemeProvider theme={darkTheme}>
         // <CssBaseline />
+
         <div className="serverWrapper ">
             <div className="serverContainer">
-                <Card>
+                <Card className="my-10">
                     <CardContent className="dark:bg-slate-700">
                         <Grid
                             container
@@ -48,7 +66,25 @@ const ServerExplorer = props => {
                                     component="div"
                                     className="text-white font-bold text-lg"
                                 >
-                                    {server_name}
+                                    {message === "online" ? (
+                                        <>
+                                            {characterLimit(server_name)}
+                                            <Badge
+                                                color="success"
+                                                badgeContent={"Online"}
+                                                className="ml-8"
+                                            />
+                                        </>
+                                    ) : (
+                                        <>
+                                            {characterLimit(server_name)}
+                                            <Badge
+                                                color="error"
+                                                badgeContent={"Offline"}
+                                                className="ml-8"
+                                            />
+                                        </>
+                                    )}
                                 </Typography>
                             </Grid>
                             <Grid item xs={4}>
@@ -56,7 +92,8 @@ const ServerExplorer = props => {
                                     variant="h6"
                                     className="text-white font-bold text-lg"
                                 >
-                                    Players: 100/{server_max_client}
+                                    Players: {server_clients}/
+                                    {server_max_clients}
                                 </Typography>
                             </Grid>
                             <Grid item xs={4}>
@@ -64,7 +101,7 @@ const ServerExplorer = props => {
                                     variant="h6"
                                     className="text-white font-bold text-lg"
                                 >
-                                    Average Daily Players: 100
+                                    Peak Daily Players: {server_peak}
                                 </Typography>
                             </Grid>
 
@@ -102,7 +139,7 @@ const ServerExplorer = props => {
                                             href={`https://${server_discord}`}
                                             target="_blank"
                                         >
-                                            {server_name} Discord
+                                            {characterLimit(server_discord)}
                                             <OpenInNewIcon />
                                         </a>
                                     </Typography>
@@ -117,7 +154,7 @@ const ServerExplorer = props => {
                                             href={`https://${server_website}`}
                                             target="_blank"
                                         >
-                                            {server_website} Website
+                                            {characterLimit(server_website)}
                                             <OpenInNewIcon />
                                         </a>
                                     </Typography>

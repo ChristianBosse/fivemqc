@@ -4,7 +4,7 @@
     background-color: #101418;
 }
 
-.container {
+.headerContainer {
     display: flex;
     justify-content: center;
     align-items: center;

@@ -7,7 +7,7 @@ const Footer = () => {
         <>
             <div className="underline"></div>
             <div className="footer">
-                <div className="container">
+                <div className="footerContainer">
                     <p className="footerText">
                         FiveM QC © 2024 Proudly made by <FaGithub />{" "}
                         <a

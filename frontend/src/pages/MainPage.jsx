@@ -1,17 +1,45 @@
 import React, { useEffect, useState } from "react";
 import "./MainPage.css";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 import AddServer from "../components/addserver/AddServer";
 import ServerExplorer from "../components/serverExplorer/ServerExplorer";
 
 const MainPage = () => {
     const [serverData, setServerData] = useState([]);
+    const [cfxStatus, setCfxStatus] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/api/status/info")
-            .then(res => res.json())
-            .then(data => {
-                setServerData(data);
-            });
+        const fetchServerLiveData = async () => {
+            try {
+                fetch("http://localhost:5000/api/status")
+                    .then(res => res.json())
+                    .then(data => {
+                        setServerData(data);
+                    });
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        const fetchCfxStatus = async () => {
+            try {
+                fetch("http://localhost:5000/api/status/cfx")
+                    .then(res => res.json())
+                    .then(data => {
+                        setCfxStatus(data);
+                    });
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        const runFetch = async () => {
+            await fetchServerLiveData();
+            await fetchCfxStatus();
+        };
+
+        runFetch();
     }, []);
 
     return (
@@ -23,6 +51,23 @@ const MainPage = () => {
                     </h1>
                     <AddServer />
                 </div>
+                <Stack
+                    sx={{
+                        width: "50%",
+                        margin: "auto",
+                    }}
+                    spacing={2}
+                >
+                    {cfxStatus.description === "All Systems Operational" ? (
+                        <Alert variant="filled" severity="success">
+                            CFX API: {cfxStatus.description}
+                        </Alert>
+                    ) : (
+                        <Alert variant="filled" severity="warning">
+                            Problem with CFX API: {cfxStatus.description}
+                        </Alert>
+                    )}
+                </Stack>
                 {serverData.map(server => (
                     <ServerExplorer key={server.server_id} server={server} />
                 ))}
