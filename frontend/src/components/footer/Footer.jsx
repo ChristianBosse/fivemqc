@@ -9,10 +9,11 @@ const Footer = () => {
             <div className="footer">
                 <div className="footerContainer">
                     <p className="footerText">
-                        FiveM QC © 2024 Proudly made by <FaGithub />{" "}
+                        FiveM QC © 2024 Proudly made by{" "}
+                        <FaGithub className="mx-2" />
                         <a
                             href="https://github.com/ChristianBosse"
-                            className="github"
+                            className="github mr-2"
                         >
                             Christian Bosse
                         </a>{" "}

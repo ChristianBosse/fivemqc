@@ -6,7 +6,12 @@ const serverClientCron = async () => {
     cron.schedule("*/1 * * * *", async () => {
         const date = new Date();
         const minutes = date.getMinutes();
-        if (minutes === 0 || minutes === 30) {
+        if (
+            minutes === 59 ||
+            minutes === 29 ||
+            minutes === 14 ||
+            minutes === 44
+        ) {
             try {
                 const [rows] = await pool.query(
                     "SELECT server_id FROM server_data"

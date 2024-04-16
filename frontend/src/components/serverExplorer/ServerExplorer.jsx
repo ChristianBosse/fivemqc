@@ -29,6 +29,7 @@ const ServerExplorer = props => {
         server_desc,
         server_website,
         server_peak,
+        server_charts,
     } = props.server;
 
     const toggleExpansion = () => {
@@ -136,8 +137,9 @@ const ServerExplorer = props => {
                                     >
                                         Discord:{" "}
                                         <a
-                                            href={`https://${server_discord}`}
+                                            href={`${server_discord}`}
                                             target="_blank"
+                                            rel="noopener noreferrer"
                                         >
                                             {characterLimit(server_discord)}
                                             <OpenInNewIcon />
@@ -151,7 +153,7 @@ const ServerExplorer = props => {
                                     >
                                         Website:{" "}
                                         <a
-                                            href={`https://${server_website}`}
+                                            href={`${server_website}`}
                                             target="_blank"
                                         >
                                             {characterLimit(server_website)}
@@ -177,7 +179,10 @@ const ServerExplorer = props => {
                                     </Typography>
                                 </Grid>
                                 <Grid item xs={12}>
-                                    <PlayerCharts />
+                                    <PlayerCharts
+                                        key={server_id}
+                                        charts={server_charts}
+                                    />
                                 </Grid>
                             </Grid>
                         </CardContent>

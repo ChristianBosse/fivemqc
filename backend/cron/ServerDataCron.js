@@ -6,7 +6,12 @@ const peakDailyPlayers = async () => {
     cron.schedule("*/1 * * * *", async () => {
         const date = new Date();
         const minutes = date.getMinutes();
-        if (minutes == 37) {
+        if (
+            minutes === 1 ||
+            minutes === 31 ||
+            minutes === 16 ||
+            minutes === 46
+        ) {
             try {
                 const [rows] = await pool.query(
                     "SELECT server_id FROM server_list"
@@ -39,7 +44,12 @@ const serverDataSchedule = async () => {
     cron.schedule("*/1 * * * *", async () => {
         const date = new Date();
         const minutes = date.getMinutes();
-        if (minutes === 58) {
+        if (
+            minutes === 0 ||
+            minutes === 30 ||
+            minutes === 15 ||
+            minutes === 45
+        ) {
             const [rows] = await pool.query(
                 "SELECT server_id FROM server_list"
             );

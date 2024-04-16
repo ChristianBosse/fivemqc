@@ -28,6 +28,7 @@ app.use(express.json());
 const serverStatus = require("../controllers/ServerStatus/ServerStatus");
 const serverInfo = require("../controllers/ServerInfo/ServerInfo");
 const cfxStatus = require("../controllers/ServerStatus/CfxStatus");
+const addServer = require("../controllers/AddServer/AddServer");
 
 // Use Routes
 app.use("/api", serverStatus);
@@ -35,6 +36,8 @@ app.use("/api", serverStatus);
 app.use("/api", serverInfo);
 
 app.use("/api", cfxStatus);
+
+app.use("/api", addServer);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
