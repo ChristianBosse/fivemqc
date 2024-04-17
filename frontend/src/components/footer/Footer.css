@@ -21,6 +21,7 @@
     /* position: fixed;
     bottom: 0; */
     width: 100vw;
+    max-width: 100%;
     height: 10vh;
     background-color: #101418;
 }
@@ -29,4 +30,14 @@
     height: 100%;
     padding: 0 2em;
     flex-direction: row;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footerText {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 1em;
+    }
 }

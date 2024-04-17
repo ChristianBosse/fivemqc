@@ -8,3 +8,12 @@
     flex-direction: column;
     width: 50%;
 }
+
+/* responsive 2 items per row */
+
+@media (max-width: 768px) {
+    .serverContainer {
+        width: 90%;
+        flex-direction: row;
+    }
+}

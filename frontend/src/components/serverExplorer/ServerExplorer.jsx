@@ -60,8 +60,9 @@ const ServerExplorer = props => {
                             container
                             justifyContent="space-between"
                             alignItems="center"
+                            spacing={3}
                         >
-                            <Grid item xs={4}>
+                            <Grid item xs={12} md={6} xl={4}>
                                 <Typography
                                     variant="h6"
                                     component="div"
@@ -88,7 +89,7 @@ const ServerExplorer = props => {
                                     )}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} md={6} xl={4}>
                                 <Typography
                                     variant="h6"
                                     className="text-white font-bold text-lg"
@@ -97,7 +98,7 @@ const ServerExplorer = props => {
                                     {server_max_clients}
                                 </Typography>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={12} md={6} xl={4}>
                                 <Typography
                                     variant="h6"
                                     className="text-white font-bold text-lg"
@@ -129,8 +130,9 @@ const ServerExplorer = props => {
                                 container
                                 justifyContent="space-between"
                                 alignItems="center"
+                                spacing={3}
                             >
-                                <Grid item xs={4}>
+                                <Grid item xs={12} md={6} xl={4}>
                                     <Typography
                                         variant="h6"
                                         className="text-white font-bold text-lg"
@@ -146,7 +148,7 @@ const ServerExplorer = props => {
                                         </a>
                                     </Typography>
                                 </Grid>
-                                <Grid item xs={4}>
+                                <Grid item xs={12} md={6} xl={4}>
                                     <Typography
                                         variant="h6"
                                         className="text-white font-bold text-lg"
@@ -161,7 +163,7 @@ const ServerExplorer = props => {
                                         </a>
                                     </Typography>
                                 </Grid>
-                                <Grid item xs={4}>
+                                <Grid item xs={12} md={6} xl={4}>
                                     <Typography
                                         variant="h6"
                                         className="text-white font-bold text-lg"

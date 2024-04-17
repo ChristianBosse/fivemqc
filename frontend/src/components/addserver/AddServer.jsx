@@ -21,6 +21,12 @@ const style = {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+
+    //responsive
+
+    "@media (max-width: 600px)": {
+        width: "86%",
+    },
 };
 
 const inputLabelStyle = {

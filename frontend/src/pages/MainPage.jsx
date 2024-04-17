@@ -78,6 +78,7 @@ const MainPage = () => {
                             margin: "auto",
                         }}
                         spacing={2}
+                        className="cfxStatus"
                     >
                         {cfxStatus.description === "All Systems Operational" ? (
                             <Alert variant="filled" severity="success">
