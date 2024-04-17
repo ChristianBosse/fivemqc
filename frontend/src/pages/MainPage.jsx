@@ -15,7 +15,7 @@ const MainPage = () => {
     useEffect(() => {
         const fetchServerLiveData = async () => {
             try {
-                fetch("http://localhost:5000/api/status")
+                fetch(`${import.meta.env.VITE_APP_URL}/api/status`)
                     .then(res => res.json())
                     .then(data => {
                         const sortedData = data.sort((a, b) => {
@@ -31,7 +31,7 @@ const MainPage = () => {
 
         const fetchCfxStatus = async () => {
             try {
-                fetch("http://localhost:5000/api/status/cfx")
+                fetch(`${import.meta.env.VITE_APP_URL}/api/status/cfx`)
                     .then(res => res.json())
                     .then(data => {
                         setCfxStatus(data);

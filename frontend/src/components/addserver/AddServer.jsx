@@ -65,7 +65,7 @@ const AddServer = () => {
         const token = captchaRef.current.getValue();
         captchaRef.current.reset();
         // Send the data to the server
-        fetch("http://localhost:5000/api/addServer", {
+        fetch(`${import.meta.env.VITE_APP_URL}/api/addServer`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
