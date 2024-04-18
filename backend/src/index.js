@@ -30,14 +30,23 @@ const serverInfo = require("../controllers/ServerInfo/ServerInfo");
 const cfxStatus = require("../controllers/ServerStatus/CfxStatus");
 const addServer = require("../controllers/AddServer/AddServer");
 
+//Are we in development mode?
+const isDev = true;
+let apiURL = "";
+if (isDev) {
+    apiURL = "/api";
+} else {
+    apiURL = "/";
+}
+
 // Use Routes
-app.use("/api", serverStatus);
+app.use(`${apiURL}`, serverStatus);
 
-app.use("/api", serverInfo);
+app.use(`${apiURL}`, serverInfo);
 
-app.use("/api", cfxStatus);
+app.use(`${apiURL}`, cfxStatus);
 
-app.use("/api", addServer);
+app.use(`${apiURL}`, addServer);
 
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
