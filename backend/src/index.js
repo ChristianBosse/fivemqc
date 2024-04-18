@@ -4,6 +4,9 @@ require("dotenv").config();
 const cors = require("cors");
 const express = require("express");
 
+// Setting EDT time zone
+process.env.TZ = "America/Montreal";
+
 // Import Cron Job
 const {
     serverDataSchedule,
