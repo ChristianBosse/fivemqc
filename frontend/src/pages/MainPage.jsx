@@ -81,11 +81,19 @@ const MainPage = () => {
                         className="cfxStatus"
                     >
                         {cfxStatus.description === "All Systems Operational" ? (
-                            <Alert variant="filled" severity="success">
+                            <Alert
+                                variant="filled"
+                                severity="success"
+                                sx={{ color: "white" }}
+                            >
                                 CFX API: {cfxStatus.description}
                             </Alert>
                         ) : (
-                            <Alert variant="filled" severity="warning">
+                            <Alert
+                                variant="filled"
+                                severity="warning"
+                                sx={{ color: "white" }}
+                            >
                                 Problem with CFX API: {cfxStatus.description}
                             </Alert>
                         )}

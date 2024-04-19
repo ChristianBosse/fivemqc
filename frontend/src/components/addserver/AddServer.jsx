@@ -104,7 +104,7 @@ const AddServer = () => {
             {isEmailSent && (
                 <Alert
                     severity="success"
-                    sx={{ width: "50%", margin: "auto" }}
+                    sx={{ width: "50%", margin: "auto", color: "white" }}
                     style={{
                         position: "absolute",
                         left: "25%",
@@ -118,7 +118,7 @@ const AddServer = () => {
             {isEmailError && (
                 <Alert
                     severity="warning"
-                    sx={{ width: "50%", margin: "auto" }}
+                    sx={{ width: "50%", margin: "auto", color: "white" }}
                     style={{
                         position: "absolute",
                         left: "25%",
@@ -129,7 +129,12 @@ const AddServer = () => {
                     Email not sent! Please try again.
                 </Alert>
             )}
-            <Button onClick={handleOpen} variant="contained" color="success">
+            <Button
+                onClick={handleOpen}
+                variant="contained"
+                color="success"
+                sx={{ color: "white" }}
+            >
                 Contact Us!
             </Button>
             <Modal
@@ -201,7 +206,7 @@ const AddServer = () => {
                         <Button
                             variant="contained"
                             color="success"
-                            sx={{ mt: 2 }}
+                            sx={{ mt: 2, color: "white" }}
                             style={{ float: "right" }}
                             onClick={handleSubmit}
                         >

@@ -13,7 +13,7 @@ const PlayerCharts = props => {
 
     return (
         <LineChart
-            className="h-80 dark:bg-slate-950"
+            className="h-80 bg-slate-950"
             data={dataCharts}
             index="date"
             categories={["players"]}

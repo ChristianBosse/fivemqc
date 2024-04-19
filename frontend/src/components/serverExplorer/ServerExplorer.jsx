@@ -55,7 +55,7 @@ const ServerExplorer = props => {
         <div className="serverWrapper ">
             <div className="serverContainer">
                 <Card className="my-10">
-                    <CardContent className="dark:bg-slate-700">
+                    <CardContent className="bg-slate-700">
                         <Grid
                             container
                             justifyContent="space-between"
@@ -125,7 +125,7 @@ const ServerExplorer = props => {
                         </Grid>
                     </CardContent>
                     <Collapse in={expanded} timeout="auto" unmountOnExit>
-                        <CardContent className="dark:bg-slate-600">
+                        <CardContent className="bg-slate-600">
                             <Grid
                                 container
                                 justifyContent="space-between"
